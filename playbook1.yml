@@ -1,0 +1,9 @@
+---
+- name: Install stack
+  hosts: srv1
+  remote_user: daniel
+
+  roles:
+    - config
+    - web
+    - db

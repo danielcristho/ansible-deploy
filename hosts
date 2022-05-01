@@ -1,0 +1,2 @@
+[server1]
+srv1 ansible_user=daniel
