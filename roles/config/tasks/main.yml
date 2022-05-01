@@ -1,0 +1,14 @@
+---
+
+- name: add php repository
+  apt_repository:
+    repo: ppa:ondrej/php
+
+- name: Update&Upgrade
+  apt:
+    upgrade: dist
+    update_cache: yes
+  
+- name: Set timezone
+  timezone:
+    name: Asia/Jakarta   
