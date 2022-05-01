@@ -1,0 +1,31 @@
+---
+- name: install nginx
+  apt: 
+    name: nginx
+    state: latest
+
+- name: install php&dependencies
+  apt:
+    name: ['php', php-common, php-cli,php-mbstring, php-xml,
+          php-curl, php-mysql, php-fpm]
+    state: 8.0
+
+- name: composer
+  apt: 
+    name: [composer, unzip]
+    state: latest
+
+- name: nginx virtualhost
+  template:
+    src: example.j2
+    dest: /etc/nginx/sites-available/{{ my-site }}
+  notify: restart nginx
+
+- name: create web-root directory
+  file:
+    path: /var/www/html/{{ my-site }}
+
+- name: composer install
+  composer:
+    command: install
+    working_dir: /var/www/html/{{ my-site }}
