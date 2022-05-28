@@ -1,8 +1,8 @@
 ---
 - name: Install stack
-  hosts: srv1
-  remote_user: daniel
-
+  hosts: all
+  remote_user: ringgo
+  become: true
   roles:
     - config
     - web

@@ -8,7 +8,16 @@
   apt:
     name: ['php', php-common, php-cli,php-mbstring, php-xml,
           php-curl, php-mysql, php-fpm]
-    state: 8.0
+    state: latest
+
+- name: configure php.ini
+  blockinfile:
+    dest: /etc/php/{{ php_version }}/fpm/php.ini
+    block: |
+      date.time = Asia/Jakarta
+      cgi-fix_pathinfo = 0
+    backup: yes
+  notify: restart php-fpm
 
 - name: composer
   apt: 
@@ -18,14 +27,19 @@
 - name: nginx virtualhost
   template:
     src: example.j2
-    dest: /etc/nginx/sites-available/{{ my-site }}
+    dest: /etc/nginx/sites-available/{{ domain_name }}
   notify: restart nginx
 
 - name: create web-root directory
   file:
-    path: /var/www/html/{{ my-site }}
+    path: /var/www/html/{{ domain_name }}
+
+- name: upload index.html&info.php
+  template:
+    src: index.php.j2
+    dest: /var/www/html/{{ domain_name }}/index.php
 
 - name: composer install
   composer:
     command: install
-    working_dir: /var/www/html/{{ my-site }}
+    working_dir: /var/www/html/{{ domain_name }}

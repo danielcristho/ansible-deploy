@@ -1,2 +1,5 @@
-[server1]
-srv1 ansible_user=daniel
+[ubuntu]
+srv1 ansible_user=ringgo
+
+[debian]
+srv2 ansible_user=ringgo
