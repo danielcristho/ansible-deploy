@@ -1,0 +1,9 @@
+---
+- name: Install stack
+  hosts: all
+  become: true
+  roles:
+    - config
+    - fe
+    - be 
+    - db

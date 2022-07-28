@@ -1,0 +1,26 @@
+---
+- name: install Mysql
+  apt:
+    name: ['mysql-server', 'python3-mysqldb']
+    state: latest
+    notify: restart mysql
+
+- name: create db
+  mysql_db:
+    name: '{{ db_name }}'
+    state: present
+
+- name: config user
+  mysql_user:
+    name: '{{ db_user }}'
+    password: '{{ db_pass }}'
+    encrypted: yes
+    priv: '{{ db_name }}.*:ALL'
+    state: present
+
+- name: config password root
+  mysql_user:
+    name: root
+    password: mysecret
+    encrypted:
+    state: present

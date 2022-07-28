@@ -1,0 +1,27 @@
+---
+- name: install apt-transport-https
+  apt:
+    name: apt-transport-https
+
+- name: add Yarn apt-key
+  apt_key:
+    url: https://dl.yarnpkg.com/debian/pubkey.gpg
+
+- name: add Yarn repository
+  apt_repository:
+    repo: "deb https://dl.yarnpkg.com/debian/ stable main"
+  filename: yarn
+
+- name: install Yarn
+  apt:
+    name: yarn
+
+- name: install NVM 
+  shell: >
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+    creates=/root/.nvm/nvm.sh
+
+- name: install Node&set version 
+  shell: >
+    /bin/bash -c "source ~/.nvm/nvm.sh && nvm install v16.15.1 && nvm alias default v16.15.1"
+    creates=/root/.nvm/alias
