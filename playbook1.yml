@@ -1,9 +1,0 @@
----
-- name: Install stack
-  hosts: all
-  remote_user: ringgo
-  become: true
-  roles:
-    - config
-    - web
-    - db
