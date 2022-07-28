@@ -4,6 +4,6 @@
   become: true
   roles:
     - config
-    - fe
-    - be 
-    - db
+    - database
+    - backend 
+    - frontend
