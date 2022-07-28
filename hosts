@@ -1,5 +1,5 @@
 [all:vars]
 ansible_user = root
 
-[development]
+[srv1]
 159.223.83.251
