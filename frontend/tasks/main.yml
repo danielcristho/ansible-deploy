@@ -10,7 +10,7 @@
 - name: add Yarn repository
   apt_repository:
     repo: "deb https://dl.yarnpkg.com/debian/ stable main"
-  filename: yarn
+    filename: yarn
 
 - name: install Yarn
   apt:
