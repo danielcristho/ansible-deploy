@@ -25,3 +25,4 @@
   shell: >
     /bin/bash -c "source ~/.nvm/nvm.sh && nvm install v16.15.1 && nvm alias default v16.15.1"
     creates=/root/.nvm/alias
+    nvm install node
