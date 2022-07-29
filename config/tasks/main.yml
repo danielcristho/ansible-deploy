@@ -4,6 +4,10 @@
   apt_repository:
     repo="ppa:ondrej/php"
 
+- name: add certbot repository
+  apt_repository:
+    repo="ppa:certbot/certbot"    
+
 - name: Update&Upgrade
   apt:
     upgrade: dist
@@ -11,4 +15,8 @@
   
 - name: Set timezone
   timezone:
-    name: Asia/Jakarta   
+    name: Asia/Jakarta
+
+- name: install certbot
+  apt: 
+    name: python3-certbot-nginx      
