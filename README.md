@@ -1,6 +1,6 @@
-# Ansible-Playbook to deploy Backend&Frontend Projects
+# Ansible-Playbook: Setup Server for Web Development
 
-## run
+## Run
 
 ```
 $ ansible-playbook --syntax-check playbook.yml
